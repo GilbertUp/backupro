@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="index.css" />
+  <!-- <script src="bower_components/firebaseui/dist/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="bower_components/firebaseui/dist/firebaseui.css" />
+<script src="fetch.js"></script> -->
+  <title>Admin Dashboard</title>
+</head>
+
+<body>
+  <div
+    style="display: flex; justify-content: space-between; position: fixed; background-color: rgb(88, 93, 161);  padding-left: 20px;">
+    <div class="logo"><em>GilTech</em></div>
+    <div class="nav" style=" left: 20px; margin-left: 400px;">
+      <ul class="list">
+        <li> <a href="dashboard.html"> Dashboard</a></li>
+        <li><a href="new-article.html">New article</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li> <a>
+            <button id="logoutBtn">
+              Logout
+            </button></li>
+        <li>
+
+          </a>
+        </li>
+      </ul>
+
+    </div>
+    <div class="menu-btn">
+      <i class="fas fa-bars"></i>
+    </div>
+  </div>
+  </nav>
+  <main>
+    <section class="container">
+      <div class="card-container">
+
+      </div>
+      <div class="card">
+        <h3 class="card-title">Comments <a href="#">
+
+          </a></h3>
+
+        <div class="card-body">
+          <h1>2</h1>
+        </div>
+      </div>
+      <div class="card">
+        <h3 class="card-title">Subscribers</h3>
+        <div class="card-body">
+          <h1>1</h1>
+        </div>
+      </div>
+      <div class="card">
+        <h3 class="card-title">Likes</h3>
+        <div class="card-body">
+          <h1>1</h1>
+        </div>
+      </div>
+      <div class="card">
+        <h3 class="card-title">Messages <a href="#">
+
+            <div class="card-body">
+              <h1>Hello!</h1>
+            </div>
+      </div>
+      </div>
+      </div>
+    </section>
+    <footer>
+
+    </footer>
+  </main>
+  <!-- <script type="module">
+     import {
+        getFirestore,
+        doc,
+        getDoc,
+        setDoc,
+        addDoc,
+        collection,
+        updateDoc,
+        deleteDoc,
+        deleteField,
+      } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js";
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,onAuthStateChanged,signOut
+      } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBG1ilf246V4WTx6jkYlavkZV3MTDB9bcc",
+        authDomain: "giltech-fbd74.firebaseapp.com",
+        databaseURL: "https://giltech-fbd74-default-rtdb.firebaseio.com",
+        projectId: "giltech-fbd74",
+        storageBucket: "giltech-fbd74.appspot.com",
+        messagingSenderId: "263298913129",
+        appId: "1:263298913129:web:2729ee418f571f50aa63f8",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      //   const database = getDatabase(app);
+      const auth = getAuth();
+      const db = getFirestore();
+    async function getUsername(uid){
+        let ref = doc(db, "users", uid);
+        var docSnap=await getDoc(ref)
+        .then(result=>{if(result.exists())
+        {
+         alert("welcome "+result.data().username)
+        }})
+        .catch(e=>console.log(e))
+        
+      }
+
+  onAuthStateChanged(auth,(user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    var uid = user.uid;
+  
+  } else {
+    // User is signed out
+    window.open("../login.html","_self")
+  }
+});
+
+//logout
+async function logout()
+{
+  signOut(auth).then(() => {
+  // Sign-out successful.
+  // window.open("./../login.html","_self")
+  console.log("done")
+}).catch((error) => {
+  // An error happened.
+  console.log(error)
+});
+}
+
+document.getElementById("logoutBtn").addEventListener("click",ev=>logout())
+</script>
+<script>
+ window.onload=localStorage. clear();
+</script> -->
+  <script>
+    localStorage.removeItem("id");
+  </script>
+  <script src="javascript.js"></script>
+
+</body>
+
+</html>

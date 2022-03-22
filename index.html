@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBrand</title>
+    <link rel="stylesheet" href="index.css">
+
+</head>
+
+<body>
+    <div
+        style="display: flex; justify-content: space-between; position: fixed; background-color: rgb(88, 93, 161);  padding-left: 20px;z-index: 1;">
+        <div class="logo"><em>GilTech</em></div>
+        <div class="menu">
+            <ul class="list2">
+                <li><a href="#">Menu</a></li>
+            </ul>
+        </div>
+        <div class="nav" style=" left: 20px; margin-left: 400px;">
+
+            <ul class="list">
+                <li> <a href="index.html"> Home</a></li>
+                <li><a href="#/skills">Skills</a></li>
+                <li><a href="about.html"> About</a></li>
+                <li><a href="#/Experiance">Experiance</a></li>
+                <li><a href="#/blog">Blog</a></li>
+                <li><a href="#/footer-f">Contact</a> </li>
+                <li> <a href="login.html"> <button>Login </button></a></li>
+            </ul>
+
+
+        </div>
+    </div>
+    <div class="header">
+        <img class="photo" src="image/me1.png" alt="photo">
+
+        <br />
+        <div class="welcome">
+            <h1>I am Gilbert</h1>
+            <p>Junior software Developer and Website design</p>
+            <a href="#/skills"><button>Discover</button></a>
+        </div>
+    </div>
+
+    <section id="/skills" class="skills">
+        <h1>Gil-<span>Skills</span></h1>
+        <p>Checkout my professional skills</p>
+        <div class="skill-row">
+            <div class="skill-card">
+                <center>
+                    <div class="number" style="background-color: darkblue;">1</div>
+                    <h1>Web development</h1>
+                    <p>We are best developer in town</p>
+                </center>
+            </div>
+            <div class="skill-card">
+                <center>
+                    <div class="number" style="background-color: darkblue;">2</div>
+                    <h1>UI/UX Design</h1>
+                    <p>We are best developer in town</p>
+                </center>
+            </div>
+            <div class="skill-card">
+                <center>
+                    <div class="number" style="background-color: darkblue;">3</div>
+                    <h1>Mobile App</h1>
+                    <p>We are best developer in town</p>
+                </center>
+            </div>
+        </div>
+    </section>
+
+    <section id="/Experiance" class="Experiance">
+        <div class="desc">
+            <h1>Gil-<span>Experience</span></h1>
+            <p>Checkout my Experience and great project <br /> I've built from this carrier feel free to check</p>
+        </div>
+        <div class="view">
+            <span>
+                <div class="course">
+                    <h1>HTML<span> <br> 90%</span></h1>
+                </div>
+                <div class="course">
+                    <h1>CSS<span> <br> 90%</span></h1>
+                </div>
+            </span><br />
+            <span>
+                <div class="course">
+                    <h1>JavaScript<span> <br>90%</span></h1>
+                </div>
+                <div class="course">
+                    <h1>UI/UX<span> <br>90%</span></h1>
+                </div>
+            </span><br />
+        </div>
+    </section>
+
+    <section id="/blog" class="skills">
+        <h1 style="padding-top: 200px; "> Gil-<span>Blogs</span></h1>
+        <p>We are more like family Checkout trends</p>
+        <div class="skill-row" id="posts">
+
+        </div>
+    </section>
+
+
+    <section id="/footer-f" class="footer-f">
+        <div class="footer" id="cont">
+            <div class="foot-div">
+                <h1>Gil Technology</h1>
+                <p>We are solution to any
+                    kind of digital service ,
+                    it is easy to interact with
+                    us for other Detail check
+                    carefull</p>
+            </div>
+            <div class="foot-div" style="margin-left: 50px;">
+                <ul>
+                    <li>Home</li>
+                    <li>GilZ-Skills</li>
+                    <li>About-Gilz</li>
+                    <li>Gilz-blog</li>
+                    <li>Login/ SignUp</li>
+                </ul>
+            </div>
+            <div class="foot-div">
+                <ul>
+                    <li>Rwanda Kigali kg 655 st</li>
+                    <li>+250780151067</li>
+                    <li>giulzitu@gmail.com</li>
+                </ul>
+            </div>
+            <div class="foot-div">
+                <form id="form">
+                    <input type="text" placeholder="Your name...." class="foot-input" /><br /><br />
+                    <input type="email" placeholder="Your email...." class="foot-input" /><br /><br /><br />
+                    <textarea id="message" type="text" placeholder="Give us hint...." class="foot-ta"></textarea>
+                    <input type="submit" value="Subscribe" style="
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    padding: 5px;
+                    border: none;
+                    border-radius: 10px;
+                    background-color:rgb(183, 214, 224);
+                    " />
+                </form>
+            </div>
+    </section>
+    <script>const fetchBlogs = async () => {
+            var posts_div = document.getElementById("posts");
+            var dataToDisplay = "";
+            var requestOptions = {
+                method: 'GET',
+                redirect: 'follow'
+            };
+
+            fetch("https://giltechbland.herokuapp.com/api/v1/blogs", requestOptions)
+                .then(response => response.json())
+                .then(result => {
+                    console.log(result.data.blogs)
+
+                    result.data.blogs.forEach(element => {
+                        dataToDisplay += `
+                        <div class="skill-card">
+                             <center>
+                                 <img src="${element.imageURL}"/>
+                                 <h1>${element.title}</h1>
+                                 <p>${element.body}</p>
+                                 
+                                 <button class="like" id="like">Like</button>
+                                 <a href="comment-form.html">  <button class="comment"id="comment">comment</button>
+                             </center>
+                         </div>
+                                     `;
+                    })
+
+                    posts_div.innerHTML = dataToDisplay;
+                })
+                .catch(error => console.log('error', error));
+
+        }
+        window.onload = fetchBlogs;
+    </script>
+
+
+</body>
+</body>
+
+</html>

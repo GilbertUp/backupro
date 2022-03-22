@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    /> -->
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="index.css" />
+  <title>New article</title>
+</head>
+
+<body>
+  <div
+    style="display: flex; justify-content: space-between; position: fixed; background-color: rgb(88, 93, 161);  padding-left: 20px;">
+    <div class="logo"><em>GilTech</em></div>
+    <div class="nav" style=" left: 20px; margin-left: 400px;">
+      <ul class="list">
+        <li> <a href="dashboard.html"> Dashboard</a></li>
+        <li><a href="new-article.html">New article</a></li>
+        <li><a href="blog.html"> Blog</a></li>
+        <li> <a>
+            <button id="logoutBtn">
+              Logout
+            </button></li>
+        <li>
+
+          </a>
+        </li>
+      </ul>
+
+    </div>
+    <div class="menu-btn">
+      <i class="fas fa-bars"></i>
+    </div>
+  </div>
+  </nav>
+  <main>
+    <section class="container">
+      <div class="card article-card-form">
+        <h3 class="card-title">NEW ARTICLE FORM</h3>
+        <div class="card-body">
+          <form action="#" class="form" id="submit">
+            <div>
+              <span>Title</span>
+              <input type="text" id="title" placeholder="Enter article title" required min="5" minlength="10">
+
+              <span></span>
+              <div id="imageField">
+                <span>image</span>
+                <input type="file" name="image" id="image">
+              </div>
+              <span></span>
+              <div>
+                <span>discription</span>
+                <textarea id="discription" name="discription" cols="10" rows="4" required minlength="10"></textarea>
+              </div>
+              <span></span>
+              <div>
+                <span>Body</span>
+                <textarea id="body" name="body" cols="30" rows="4" required minlength="30"></textarea>
+              </div>
+              <!-- <div>
+                <span>Tags</span>
+                <select id="tag" name="tag" required>
+                  <option value="">Select tag</option>
+                  <option value="Tech">Tech</option>
+                  <option value="Business">Business</option>
+                </select>
+              </div> -->
+              <div>
+                <button type="submit">Submit</button>
+              </div>
+          </form>
+          <!-- <button onclick="getDataForUpdate(1)">click me</button> -->
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script>
+      <script type="module">
+     import {
+        getFirestore,
+        doc,
+        getDoc,
+        setDoc,
+        addDoc,
+        collection,
+        updateDoc,
+        deleteDoc,
+        deleteField,
+      } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js";
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,onAuthStateChanged,signOut
+      } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBG1ilf246V4WTx6jkYlavkZV3MTDB9bcc",
+        authDomain: "giltech-fbd74.firebaseapp.com",
+        databaseURL: "https://giltech-fbd74-default-rtdb.firebaseio.com",
+        projectId: "giltech-fbd74",
+        storageBucket: "giltech-fbd74.appspot.com",
+        messagingSenderId: "263298913129",
+        appId: "1:263298913129:web:2729ee418f571f50aa63f8",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      //   const database = getDatabase(app);
+      firebase.initializeApp(firebaseConfig);
+      const auth = getAuth();
+      const db = getFirestore();
+  onAuthStateChanged(auth,(user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    var uid = user.uid;
+  
+  } else {
+    // User is signed out
+    window.open("../login.html","_self")
+  }
+});
+
+//logout
+async function logout()
+{
+  signOut(auth).then(() => {
+  // Sign-out successful.
+  // window.open("./../login.html","_self")
+  console.log("done")
+}).catch((error) => {
+  // An error happened.
+  console.log(error)
+});
+}
+
+  // async function addDataToCollection(uid) {
+  //         //   console.log("ok");
+  //         let ref = doc(db, "posts");
+  //         const docRef = await setDoc(ref, {
+            
+  //           email: email,
+  //           uid: uid,
+            
+  //         })
+  //           .then(() => {
+  //             alert("user Created well done");
+  //             //   window.open("./dashboard/dashboard.html", "_self");
+  //           })
+  //           .catch((error) => alert("Error:" + error));
+  //         console.log(docRef);
+  //       }
+      
+        // document.getElementById("submit").addEventListener("click",event=>{
+        //   let title=document.getElementById("title").value;
+        //   let tag=document.getElementById("tag").value;
+        //   let image=document.getElementById("image").value;
+        //   let body=document.getElementById("body").value;
+        //   if(tag=="" )
+        //   {
+        //     alert("Please select tag!")
+        //     document.getElementById("tag").focus
+        //   }
+        //   else
+        //   {
+        //     addDataToCollection()
+        //   }
+        // })
+
+
+document.getElementById("logoutBtn").addEventListener("click",ev=>logout())
+</script>
+<script src="javascript.js"></script>
+<script>
+  
+  window.onload =getDataForm();
+  function getDataForm(){
+    ;
+    if(localStorage.getItem("id"))
+    {
+      // getDataForUpdate(id);
+      // console.log(id)
+      document.getElementById("title").value=localStorage.getItem("title")
+      document.getElementById("body").value=localStorage.getItem("body")
+      document.getElementById("tag").value=localStorage.getItem("tag")
+      document.getElementById("imageField").style.display="none";
+     
+    }else document.getElementById("image").required=''
+  }
+
+  </script> -->
+  <script src="javascript.js"></script>
+
+  <script>
+
+
+    function getDataForm() {
+      if (localStorage.getItem("id")) {
+        // getDataForUpdate(id);
+        // console.log(id)
+        document.getElementById("title").value = localStorage.getItem("title")
+        document.getElementById("body").value = localStorage.getItem("body")
+        document.getElementById("discription").value = localStorage.getItem("discription")
+        document.getElementById("imageField").style.display = "none";
+
+      } else {
+        document.getElementById("image").required = '';
+        console.log("nooo")
+      }
+    }
+    getDataForm();
+    let token = localStorage.getItem("token");
+    async function addDataToCollection(title, discription, image, body) {
+
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", token);
+      myHeaders.append("Content-Type", "application/json");
+
+      var raw = JSON.stringify({
+        "title": title,
+        "description": discription,
+        "body": body,
+        "photo": image
+      });
+
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+
+      fetch("https://giltechbland.herokuapp.com/api/v1/blogs", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          console.log(result)
+          alert("Article created well done")
+          location.href = '/dashboard/blog.html'
+
+        })
+        .catch(error => console.log('error', error));
+    }
+
+    document.getElementById("submit").addEventListener("submit", event => {
+      event.preventDefault()
+      let title = document.getElementById("title").value;
+      let discription = document.getElementById("discription").value;
+      let image = document.getElementById("image").value;
+      let body = document.getElementById("body").value;
+      let id = localStorage.getItem('id');
+      if (id) {
+        update(id, title, discription, body)
+      }
+      else {
+
+        addDataToCollection(title, discription, image, body)
+      }
+
+
+    })
+
+    function update(id, title, discription, body) {
+
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", token);
+      myHeaders.append("Content-Type", "application/json");
+
+      var raw = JSON.stringify({
+        "title": title,
+        "description": discription,
+        "body": body
+      });
+
+      var requestOptions = {
+        method: 'PATCH',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+
+      fetch(`https://giltechbland.herokuapp.com/api/v1/blogs/${id}`, requestOptions)
+        .then(response => response.text())
+        .then(result => {
+          console.log(result)
+          alert("Article updated well done")
+          location.href = '/dashboard/blog.html'
+        })
+        .catch(error => console.log('error', error));
+      // localStorage.clear();
+    }
+
+  </script>
+</body>
+
+</html>

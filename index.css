@@ -1,0 +1,393 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.header{
+    background: -webkit-linear-gradient(0deg, rgb(70, 109, 70),rgb(109, 122, 167),rgb(108, 88, 134));   
+    padding: 30px;
+    color: lightblue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    font-size: 2rem;
+    height: 100vh;
+     
+}
+.logo{
+    float: left;
+    padding-top: 25px;
+    width: 30px;
+}
+.logo{
+    color:whitesmoke;
+    font-size: 35px;
+    font-weight: 10px;
+    font-family: Arial, Helvetica, sans-serif
+}
+.nav{
+    float: right;
+    border-radius: 0px;
+    width:250vh;
+}
+.nav ul{
+    display: inline-flex;
+}
+.nav ul li{
+    list-style: none;
+    margin-left: 35px;
+    font-size: 1.5rem;
+    color: rgb(183, 214, 224);
+    padding-top: 20px;
+}
+.nav ul li button{
+    background-color:rgb(183, 214, 224);
+    padding: 5px;
+    margin-top: 2px;
+    margin-bottom: 40px;
+    padding-left: 30px;
+    padding-right: 50px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.0rem;
+}
+.list{
+    padding-right: 50px;
+}
+.nav ul li:hover{
+    color: blue;
+}
+.welcome{
+    padding-top: 10%;
+    text-align: center;
+    font-weight: lighter;
+    font-size: 3rem;
+}
+.photo{
+    position: absolute;
+        width: 352px; 
+        left: 2px;
+        top: 72.58px;
+        width: 200px;
+        padding-top: 20px;
+        padding-left: 5px;
+        border-radius: 20px;
+    
+    }
+.welcome p{
+    font-size: 2rem;
+    margin-top: 10px;
+}
+.welcome button{
+    background-color: rgb(1, 51, 1);
+    font-size: 2rem;
+    padding: 10px;
+    cursor: pointer;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: none;
+    margin-top: 40px;
+    border: 1px solid rgb(1, 51, 1);
+    border-radius: 10px;
+    color: white;
+}
+.welcome button:hover{
+    background-color:rgb(202, 190, 190);
+    color: rgb(1, 51, 1);
+    transition: ease-in-out 0.5s;
+}
+.skills{
+    padding: 30px;
+    text-align: center;
+    justify-content: center;
+    height: 100vh;
+    padding-top: 100px;
+}
+.skills h1{
+    padding-top: 40px;
+    font-size: 2rem;
+}
+.skills h1 span{
+    color: rgb(24, 45, 114);
+}
+.skills p{
+    padding-top: 30px;
+}
+.skill-row{
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 50px;
+}
+.skill-row .number{
+    background-color: rgb(218, 214, 214);
+    width: 50px;
+    height: 50px;
+    padding: 12px;
+    color: white;
+    border-radius: 100px;
+    border:3px solid white;
+    margin-top: -35px;
+}
+.skill-card{
+    background-color: rgb(218, 214, 214);
+    width: 30%;
+    padding: 10px;
+    border-radius: 10px ;
+    border: 2px solid rgb(218, 214, 214);
+
+
+}
+.skill-card:hover{
+    background-color: transparent;
+    border: 2px solid rgb(218, 214, 214);
+    transition: ease-in-out 0.5s;
+    
+}
+.skill-card h1{
+    color: rgb(24, 45, 114);
+    font-size: 1.3rem;
+    padding-top: 40px;
+}
+.skill-card p{
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+.Experiance{
+    background-color:white;
+    padding: 30px;
+    border-radius: 30px;
+    height: 70vh;
+    display: inline-flex;
+    width: 98%;
+    padding-top: 40px;
+  
+}
+
+.Experiance.desc{
+    width: 40%;
+    margin-top: 300px;
+   
+}
+.desc{
+    padding-top: 100px;
+    padding-right: 100px;
+   
+}
+
+.Experiance h1 span{
+    color: rgb(24, 45, 114);
+}
+.Experiance p{
+    padding-top: 30px;
+}
+.Experiance .view{
+    box-shadow: 1px 2px 5px rgb(24, 45, 114);
+    width: 60%;
+    padding: 100px;
+    border-radius: 20px;
+    display: inline-flex;
+}
+.Experiance .view span{
+    width: 50%;
+    padding: 10px;
+    margin: 5px;
+}
+.Experiance .view span .course{
+    width: 100%;
+    padding: 10px;
+    margin: 5px;
+    height: 50px;
+    border: 1px solid rgb(24, 45, 114);
+    border-radius: 10px;
+    padding-bottom: 70px;
+    background-color: rgba(34, 58, 138, 0.705);
+}
+
+}
+.Experiance .view span .course:hover{
+    box-shadow: 0px 0px 300px  rgb(11, 20, 136);
+    transition: ease-in-out 0.5s;
+}
+.Experiance .view:hover{
+    background-color: rgba(88, 93, 161, 0.808);
+    color: white;
+    padding: 70px;
+    transition: ease-in-out 0.3s;
+}
+
+.Experiance{
+    padding-top: 200px;
+ 
+}
+.view{
+    height: 300px;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+a{
+    text-decoration: none;
+    color: currentColor;
+}
+.blog{
+    background-color: white;
+    padding: 10px;
+    height: 20px;
+    display: inline-flex;
+    width: 100%;
+}
+.skill-row{
+    padding-top:4px;
+   
+}
+
+ 
+.readmore{
+    background-color:rgb(183, 214, 224);
+    border-radius:7px;
+    border: none;
+    font-size: 1rem;
+    
+}
+.comment{
+    background-color:rgb(183, 214, 224);
+    border-radius:7px;
+    margin-left: 5px;
+    border: none;
+    font-size: 1rem;
+}
+.like{
+    background-color:rgb(183, 214, 224);
+    border-radius:7px;
+    margin-left: 5px;
+    border: none;
+    font-size: 1rem;
+}
+.readmore:hover{
+    background-color: rgb(88, 93, 161);
+    color: white;
+ 
+}
+.like:hover{
+
+   background-color: rgb(88, 93, 161);
+    color:  white;
+    
+     
+}
+.comment:hover{
+    background-color: rgb(88, 93, 161);
+    color:  white;
+    
+}
+.comment, .like, .readmore{
+  
+    padding: 3px;
+  
+}
+.skill-card img{
+    height: 150px;
+    border-radius: 10px;
+}
+.footer{
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 0px;
+    padding-top: 100px;
+    margin-top: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: -webkit-linear-gradient(0deg, rgb(70, 109, 70),rgb(109, 122, 167),rgb(108, 88, 134));
+    color: lightblue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    height: 500px;
+    border-radius: 10px 10px 0px 0px;
+}  
+.foot-div{
+    padding-bottom: 300px;
+    width: 25%;
+    height: 10px;
+}
+
+.foot-div h1{
+    font-size: 1.5rem;
+    margin-top: -10px;
+   
+}
+.foot-div p{
+    font-size: 1rem;
+}
+.foot-div ul li{
+    font-size: 1rem;
+    margin-top: 3px;
+    list-style: none;
+    text-decoration: none;
+}
+.foot-input{
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+}
+.foot-ta{
+    width: 100%;
+    height: 100px;
+    border-radius: 3px;
+    border: none;
+    padding: 10px;
+    margin-top: -25px;
+    padding-top: 3px;
+}
+
+.footer{
+    height: 400px;
+}
+.footer-f{
+    padding-top: 200px;
+}
+.menu .list2 {
+    display: none;
+   
+}
+.menu .list2 li{
+    list-style: none;
+  padding-left: 300px;
+    font-size: 1.5rem;
+    color: rgb(183, 214, 224);
+    padding-top: 35px;
+   
+}
+@media(max-width:800px)
+{
+    .menu .list2  {
+        display: flex;
+    }
+    .nav{
+        float: right;
+        border-radius: 0px;
+        width:250vh;
+    }
+    .nav ul{
+        display:inline-block;
+    }
+    .nav ul li{
+        list-style: none;
+        margin-left: 20px;
+        margin-right: 300px;
+        font-size: 1.5rem;
+        color: rgb(183, 214, 224);
+        padding-top: 20px;
+        .nav{
+            height: 30px;
+        }
+    }
+    
+}
+
+   

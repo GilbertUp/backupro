@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signup form</title>
+  <link rel="stylesheet" href="signup.css" />
+</head>
+
+<body>
+  <div class="signup">
+    <br />
+    <h1 style="margin-top: 20px; color: indigo">SignUp please</h1>
+    <br /><br />
+    <form style="width: 100px" id="signup-form">
+      <input type="text" id="username" name="username" placeholder="Username" /><br />
+      <input type="email" id="email" name="email" placeholder="Email" /><br />
+      <input type="password" id="password" name="password" placeholder="Password" /><br />
+      <input type="password" id="cpassword" placeholder="confirm Password" /><br />
+      <input type="submit" value="SignUp" class="submit" /><br />
+    </form>
+    <p style="
+          float: right;
+          margin-top: 20px;
+          margin-right: 200px;
+          color: indigo;
+        ">
+      <a href="index.html">Home</a>
+    </p>
+    <p style="text-align: center; margin-top: 20px; color: indigo">
+      <a href="login.html">Login</a>
+    </p>
+  </div>
+  <!-- <script type="module">
+      // Import the functions you need from the SDKs you need
+      //   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
+      //   import {
+      //     getDatabase,
+      //     set,
+      //     ref,
+      //   } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-database.js";
+      import {
+        getFirestore,
+        doc,
+        getDoc,
+        setDoc,
+        addDoc,
+        collection,
+        updateDoc,
+        deleteDoc,
+        deleteField,
+      } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js";
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-auth.js";
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBG1ilf246V4WTx6jkYlavkZV3MTDB9bcc",
+        authDomain: "giltech-fbd74.firebaseapp.com",
+        databaseURL: "https://giltech-fbd74-default-rtdb.firebaseio.com",
+        projectId: "giltech-fbd74",
+        storageBucket: "giltech-fbd74.appspot.com",
+        messagingSenderId: "263298913129",
+        appId: "1:263298913129:web:2729ee418f571f50aa63f8",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      //   const database = getDatabase(app);
+      const auth = getAuth();
+      const db = getFirestore();
+      const signUpBtn = document.getElementById("signUp");
+      signUpBtn.addEventListener("click", (e) => {
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+        let username = document.getElementById("username").value;
+        async function addDataToCollection(uid) {
+          //   console.log("ok");
+          let ref = doc(db, "users", uid);
+          const docRef = await setDoc(ref, {
+            username: username,
+            email: email,
+            uid: uid,
+            last_login: Date(),
+          })
+            .then(() => {
+              alert("user Created well done");
+              //   window.open("./dashboard/dashboard.html", "_self");
+            })
+            .catch((error) => alert("Error:" + error));
+          console.log(docRef);
+        }
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            // Signed in
+            var user = userCredential.user;
+
+            // var database_ref = database.ref();
+
+            // user_data = {
+            //   username: username,
+            //   email: email,
+            //   last_login: Date.now(),
+            // };
+            // database_ref.child("users/" + user.uid).set(user_data);
+            // set(ref(database, "users/" + userCredential.user.uuid), {
+            //   username: username,
+            //   email: email,
+            // });
+            // firebase
+            //   .database()
+            //   .ref("users/" + user.uid)
+            //   .set({
+            //     username: username,
+            //     email: email,
+            //     // profile_picture: imageUrl,
+            //   });
+            addDataToCollection(user.uid);
+            // console.log(user);
+
+            // ...
+          })
+          .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ..
+            alert("Error: " + errorMessage);
+          });
+      });
+    </script> -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="./server.js"></script>
+  <script>
+    const form = document.getElementById('signup-form');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+
+      var raw = JSON.stringify({
+        "fullName": form.username.value,
+        "email": form.email.value,
+        "password": form.password.value,
+        "confirmPassword": form.cpassword.value
+      });
+
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+
+      fetch("https://giltechbland.herokuapp.com/api/v1/users", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          console.log(result)
+          if (result.status == 201) {
+            swal('success', result.message, 'success').then(() => {
+              // localStorage.setItem('token', 'Bearer ' + data.token)
+              // console.log("data:", data.role)
+
+              location.href = './';
+
+            })
+          }
+          else {
+            alert(result)
+          }
+
+        })
+        .catch(error => console.log('error', error));
+      // try {
+      //   const resp = await fetch('https://giltechbland.herokuapp.com/api/v1/users', {
+      //     method: 'POST',
+      //     headers: {
+      //       'Accept': 'application/json',
+      //       'Content-Type': 'application/json'
+      //     },
+      //     body: JSON.stringify({
+      //       "fullName": form.username.value,
+      //       " email": form.email.value,
+      //       " password": form.password.value,
+      //       " confirmPassword": form.cpassword.value
+      //     })
+      //   })
+      //   const data = await resp.json()
+      //   console.log("resp:" + daya)
+      // if (resp.status == 200) {
+      //   swal('success', data.message, 'success').then(() => {
+      //     localStorage.setItem('token', 'Bearer ' + data.token)
+      //     console.log("data:", data.role)
+      //     if (data.role == 'admin') {
+      //       console.log("done")
+      //       location.href = '/dashboard/dashboard.html'
+      //     }
+      //     if (data.role == 'user') {
+      //       location.href = './'
+      //     }
+      //   })
+      // }
+      // } catch (error) {
+      // }
+    })
+
+  </script>
+
+
+</body>
+
+</html>

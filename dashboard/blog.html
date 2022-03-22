@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="index.css" />
+  <title> Blog</title>
+</head>
+
+<body>
+  <div
+    style="display: flex; justify-content: space-between; position: fixed; background-color: rgb(88, 93, 161);  padding-left: 20px;">
+    <div class="logo"><em>GilTech</em></div>
+    <div class="nav" style=" left: 20px; margin-left: 400px;">
+      <ul class="list">
+        <li> <a href="dashboard.html"> Dashboard</a></li>
+        <li><a href="new-article.html">New article</a></li>
+        <li><a href="blog.html"> Blog</a></li>
+        <li> <a>
+            <button id="logoutBtn">
+              Logout
+            </button></li>
+        <li>
+
+          </a>
+        </li>
+      </ul>
+
+    </div>
+    <div class="menu-btn">
+      <i class="fas fa-bars"></i>
+    </div>
+  </div>
+  </nav>
+  <main>
+    <section class="container">
+      <div class="card article-card-queries">
+        <h3 class="card-title">Blog</h3>
+        <div class="card-body">
+          <table>
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Body</th>
+
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="posts">
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <span>
+      </span>
+    </footer>
+  </main>
+  <script src="javascript.js"></script>
+  <script>
+
+    function getdataOnIndex() {
+      localStorage.removeItem("id");
+      localStorage.removeItem("title");
+      localStorage.removeItem("body");
+      localStorage.removeItem("discription");
+      localStorage.removeItem("image");
+      var posts_div = document.getElementById("posts");
+      var dataToDisplay = "";
+      var requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      };
+      fetch("https://giltechbland.herokuapp.com/api/v1/blogs", requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          // console.log(result.data.blogs)
+          result.data.blogs.forEach(element => {
+            dataToDisplay += `
+                    <tr>
+                              <td>
+                                  <img src="${element.imageURL}">
+                              </td>
+                              <td>
+                                 ${element.title}
+                              </td>
+                              <td>
+                                  ${element.body}
+                              </td>
+                              <td>
+                                  <div class="flex">
+                                       <a href="new-article.html" onclick="storeData('${element._id}','${element.title}','${element.body}','${element.image}','${element.description}');">
+                                      <button>Update</button>
+                                  </a>
+                                  <a href="#">
+                                      <button id='${element._id}' onclick='delete_post(
+            this.id
+          )' class="delete-button">Delete</button>
+          <a href="#">
+                                      <button id='${element._id}' onclick='comments(
+            this.id
+          )' class="combtn">comments</button>
+          <a href="#">
+                                      <button id='${element._id}' onclick='likes(
+            this.id
+          )' class="blog-id">likes</button>
+                              </td>
+                          </tr>
+                          `;
+          })
+          posts_div.innerHTML = dataToDisplay;
+          //  console.log(blogs)
+        })
+        .catch(error => console.log('error', error));
+
+    }
+
+    function storeData(id, title, body, image, discription) {
+      // console.log("done");
+      localStorage.setItem("id", id);
+      localStorage.setItem("title", title);
+      localStorage.setItem("body", body);
+      localStorage.setItem("discription", discription);
+      localStorage.setItem("image", image);
+    }
+
+    function delete_post(id) {
+      let token = localStorage.getItem("token");
+      console.log(id)
+      var myHeaders = new Headers();
+      myHeaders.append("Authorization", token);
+
+      var requestOptions = {
+        method: 'DELETE',
+        headers: myHeaders,
+        redirect: 'follow'
+      };
+
+      fetch(`https://giltechbland.herokuapp.com/api/v1/blogs/${id}`, requestOptions)
+        .then(response => response.text())
+        .then(result => {
+          console.log(result)
+          alert("Article deleted well done")
+          getdataOnIndex()
+        })
+        .catch(error => console.log('error', error));
+    }
+    window.onload = getdataOnIndex();
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login form</title>
+  <link rel="stylesheet" href="login.css" />
+  <script src="server.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<body>
+  <div class="login">
+    <br />
+    <h1 style="margin-top: 20px; color: indigo">Login please</h1>
+    <br /><br />
+    <form class="login_form">
+      <input type="email" id="email" name="email" placeholder="Username" /><br />
+      <input type="password" id="password" name="password" placeholder="Password" /><br />
+      <a href="index.html"><input type="submit" id="loginBtn" value="Login" class="submit" /><br /></a>
+    </form>
+    <p style="float: right; margin-top: 13px;margin-right:200px; color: indigo;"><a href="forgot-password.html">Forgot
+        password?</a></p>
+    <p style="text-align: center; margin-top: 24px;padding-right: 10px; color: indigo;"><a href="signup.html">Signup</a>
+    </p>
+    <script>
+      const form = document.querySelector('.login_form');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        try {
+          const resp = await fetch(api + 'users/login', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              email: form.email.value,
+              password: form.password.value
+            })
+          })
+          const data = await resp.json()
+          console.log("resp")
+          if (resp.status == 200) {
+            swal('success', data.message, 'success').then(() => {
+              localStorage.setItem('token', 'Bearer ' + data.token)
+              console.log("data:", data.role)
+              if (data.role == 'admin') {
+                console.log("done")
+                location.href = '/dashboard/dashboard.html'
+              }
+              if (data.role == 'user') {
+                location.href = './'
+              }
+            })
+          }
+          //const data = await resp.json()
+          // if (resp.status == 404) {
+          //     swal('error', data.Error, 'error')
+          // }
+          // if (resp.status == 403) {
+          //     swal('error', data.Error, 'error')
+          // }
+          // if (resp.status == 500) {
+          //     swal('error', data.Message, 'error')
+          // }
+        } catch (error) {
+        }
+      })
+
+
+    </script>
+</body>
+
+</html>
